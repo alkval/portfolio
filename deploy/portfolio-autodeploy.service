@@ -1,0 +1,16 @@
+≠rá^—f•ñÿ¶{NÏy 'v√Æ∂õ≠[Unit]
+Description=Deploy alkval.com portfolio from GitHub
+Wants=network-online.target
+After=network-online.target docker.service
+Requires=docker.service
+ConditionPathExists=/DATA/AppData/portfolio/.git
+
+[Service]
+Type=oneshot
+User=alkval
+WorkingDirectory=/DATA/AppData/portfolio
+ExecStart=/usr/bin/bash /DATA/AppData/portfolio/scripts/auto-deploy.sh
+TimeoutStartSec=5min
+UMask=0027
+NoNewPrivileges=true
+

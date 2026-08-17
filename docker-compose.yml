@@ -1,0 +1,30 @@
+≠rá^—f•ñÿ¶{NÏy 'v√Æ∂õ≠services:
+  portfolio:
+    image: docker.io/nginx:stable-alpine
+    container_name: portfolio
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/portfolio/site:/usr/share/nginx/html:ro
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--spider", "http://127.0.0.1/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  cloudflared:
+    image: docker.io/cloudflare/cloudflared:2026.7.2
+    container_name: portfolio-cloudflared
+    restart: unless-stopped
+    user: "1000:1000"
+    command:
+      - tunnel
+      - --no-autoupdate
+      - run
+      - --token-file
+      - /run/secrets/tunnel-token
+    volumes:
+      - /DATA/AppData/portfolio/secrets/tunnel-token:/run/secrets/tunnel-token:ro
+    depends_on:
+      portfolio:
+        condition: service_healthy

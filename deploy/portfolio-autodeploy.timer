@@ -1,0 +1,12 @@
+≠rá^—f•ñÿ¶{NÏy 'v√Æ∂õ≠[Unit]
+Description=Check GitHub for alkval.com portfolio updates
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=1min
+AccuracySec=10s
+Unit=portfolio-autodeploy.service
+
+[Install]
+WantedBy=timers.target
+

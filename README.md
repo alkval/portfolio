@@ -1,7 +1,4 @@
-Exit code: 0
-Wall time: 0.6 seconds
-Output:
-# Alexander Kvalvaag â€” Portfolio
+­r‡^Ñf¥–Ø¦{NìyÊ'vÃ®¶›­# Alexander Kvalvaag â€” Portfolio
 
 Source for [alkval.com](https://alkval.com), served by Nginx through a Cloudflare Tunnel with no public router ports.
 
@@ -25,5 +22,4 @@ bash scripts/install-autodeploy.sh
 ```
 
 After installation, publishing a commit to `main` is sufficient to update the live portfolio.
-
 
