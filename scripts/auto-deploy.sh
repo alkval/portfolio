@@ -1,4 +1,4 @@
-≠rá^—f•ñÿ¶{NÏy 'v√Æ∂õ≠#!/usr/bin/env bash
+#!/usr/bin/env bash
 set -Eeuo pipefail
 
 readonly APP_DIR="/DATA/AppData/portfolio"

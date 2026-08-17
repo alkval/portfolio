@@ -1,4 +1,4 @@
-≠rá^—f•ñÿ¶{NÏy 'v√Æ∂õ≠services:
+services:
   portfolio:
     image: docker.io/nginx:stable-alpine
     container_name: portfolio

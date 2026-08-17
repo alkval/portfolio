@@ -1,4 +1,4 @@
-­r‡^Ñf¥–Ø¦{NìyÊ'vÃ®¶›­# Alexander Kvalvaag â€” Portfolio
+# Alexander Kvalvaag â€” Portfolio
 
 Source for [alkval.com](https://alkval.com), served by Nginx through a Cloudflare Tunnel with no public router ports.
 
