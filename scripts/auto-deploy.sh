@@ -8,6 +8,13 @@ exec 9>"$LOCK_FILE"
 flock -n 9 || exit 0
 
 cd "$APP_DIR"
+
+# The systemd unit runs with UMask=0027, so files Git writes are not readable by
+# nginx inside the container (a different uid). Open up only the published site.
+publish_permissions() {
+  chmod -R a+rX site
+}
+
 git fetch --depth=1 origin main
 
 current_revision="$(git rev-parse HEAD)"
@@ -18,6 +25,7 @@ if [[ "$current_revision" == "$target_revision" ]]; then
 fi
 
 git reset --hard "$target_revision"
+publish_permissions
 
 if docker inspect portfolio --format '{{.State.Health.Status}}' | grep -qx healthy \
   && docker exec portfolio wget --quiet --spider http://127.0.0.1/; then
@@ -27,5 +35,6 @@ fi
 
 printf 'Portfolio health check failed; rolling back to %s\n' "$current_revision" >&2
 git reset --hard "$current_revision"
+publish_permissions
 exit 1
 
