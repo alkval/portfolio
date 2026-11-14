@@ -1,6 +1,6 @@
 services:
   portfolio:
-    image: docker.io/nginx:stable-alpine
+    image: nginx:stable-alpine
     container_name: portfolio
     restart: unless-stopped
     volumes:
@@ -13,7 +13,7 @@ services:
       start_period: 10s
 
   cloudflared:
-    image: docker.io/cloudflare/cloudflared:2026.7.2
+    image: cloudflare/cloudflared:2026.10.5
     container_name: portfolio-cloudflared
     restart: unless-stopped
     user: "1000:1000"
