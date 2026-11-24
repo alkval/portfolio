@@ -13,7 +13,7 @@ services:
       start_period: 10s
 
   cloudflared:
-    image: cloudflare/cloudflared:2026.10.5
+    image: cloudflare/cloudflared:2026.11.2
     container_name: portfolio-cloudflared
     restart: unless-stopped
     user: "1000:1000"
